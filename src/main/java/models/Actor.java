@@ -4,26 +4,24 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
-@Table(name="studios")
-public class Studio {
+@Table(name="actors")
+public class Actor {
     private int id;
     private String name;
-    private int budget;
     private Set<Film> films;
 
-    public Studio() {
-    }
+    public Actor() {}
 
-    public Studio(String name, int budget) {
+    public Actor(String name) {
         this.name = name;
-        this.budget = budget;
         this.films = new HashSet<Film>();
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @Column(name="id")
     public int getId() {
         return id;
     }
@@ -41,16 +39,10 @@ public class Studio {
         this.name = name;
     }
 
-    @Column(name = "budget")
-    public int getBudget() {
-        return budget;
-    }
-
-    public void setBudget(int budget) {
-        this.budget = budget;
-    }
-
-    @OneToMany(mappedBy = "studio")
+    @ManyToMany
+    @JoinTable(name="actor_films", joinColumns = {@JoinColumn(name="actor_id", nullable = false, updatable = false)},
+    inverseJoinColumns = {@JoinColumn(name="film_id", nullable = false, updatable = false)}
+    )
     public Set<Film> getFilms() {
         return films;
     }
@@ -58,4 +50,5 @@ public class Studio {
     public void setFilms(Set<Film> films) {
         this.films = films;
     }
+
 }

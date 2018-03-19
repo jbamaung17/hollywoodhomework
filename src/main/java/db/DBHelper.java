@@ -86,6 +86,7 @@ public class DBHelper {private static Transaction transaction;
     }
 
     public static <T> List<T> getAll(Class classType) {
+        session = HibernateUtil.getSessionFactory().openSession();
         List<T> results = null;
         Criteria cr = session.createCriteria(classType);
         results = getList(cr);
@@ -93,6 +94,7 @@ public class DBHelper {private static Transaction transaction;
     }
 
     public static <T> T find(Class classType, int id) {
+        session = HibernateUtil.getSessionFactory().openSession();
         T result = null;
         Criteria cr = session.createCriteria(classType);
         cr.add(Restrictions.eq("id", id));
