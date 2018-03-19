@@ -30,5 +30,4 @@ public class TestFilm {
         List<Film> results = DBHelper.getAll(Film.class);
         assertEquals(1, results.size());
     }
-
 }
