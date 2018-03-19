@@ -51,4 +51,8 @@ public class Actor {
         this.films = films;
     }
 
+    public void addFilm(Film film) {
+        this.films.add(film);
+    }
+
 }

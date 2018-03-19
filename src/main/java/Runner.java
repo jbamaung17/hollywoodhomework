@@ -33,7 +33,11 @@ public class Runner {
         List<Actor> allActors = DBHelper.getAll(Actor.class);
         List<Film> allFilms = DBHelper.getAll(Film.class);
 
+    DBHelper.addActorToFilm(actor1, film1);
+    DBHelper.addActorToFilm(actor2, film1);
+    DBHelper.addActorToFilm(actor3, film1);
 
+    Film foundFilm = DBHelper.find(Film.class, film1.getId());
 
     }
 }

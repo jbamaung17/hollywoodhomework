@@ -53,6 +53,10 @@ public class Film {
         this.actors = actors;
     }
 
+    public void addActors(Actor actor) {
+        this.actors.add(actor);
+    }
+
     @ManyToOne
     @JoinColumn(name="director_id", nullable = false)
     public Director getDirector() {
